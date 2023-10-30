@@ -634,6 +634,7 @@
     <module>modules/activiti-image-generator</module>
     <module>modules/activiti-bpmn-converter</module>
     <module>modules/activiti-engine</module>
+    <module>modules/Testdemo</module>
   </modules>
 
   <build>
