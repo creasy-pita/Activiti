@@ -142,7 +142,8 @@ public class DemoMain {
     }
 
     private static ProcessEngine getProcessEngine() {
-        ProcessEngineConfiguration cfg = ProcessEngineConfiguration.createStandaloneInMemProcessEngineConfiguration();
+//        ProcessEngineConfiguration cfg = ProcessEngineConfiguration.createStandaloneInMemProcessEngineConfiguration();
+        ProcessEngineConfiguration cfg = ProcessEngineConfiguration.createProcessEngineConfigurationFromResourceDefault();
         //构造流程引擎
         ProcessEngine processEngine = cfg.buildProcessEngine();
         String name = processEngine.getName();
