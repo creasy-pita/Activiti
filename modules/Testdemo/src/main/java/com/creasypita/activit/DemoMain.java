@@ -1,5 +1,6 @@
 package com.creasypita.activit;
 
+import org.activiti.engine.impl.db.DbSchemaCreate;
 import org.activiti.engine.task.Task;
 import org.activiti.engine.*;
 import org.activiti.engine.form.FormProperty;
