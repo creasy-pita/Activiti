@@ -11,3 +11,36 @@ spring:
       idle-timeout: 18000 #空闲连接存活最大时间，默认600000（10分钟）
       pool-name: sunnyHikariCP  #连接池名称
       connection-test-query: SELECT 1
+  # ShardingSphere 配置项
+  shardingsphere:
+    datasource:
+      # 所有数据源的名字
+      names: activiti0
+      # 订单 orders 数据源配置 00
+      activiti0:
+        type: com.zaxxer.hikari.HikariDataSource # 使用 Hikari 数据库连接池
+        driver-class-name: com.mysql.jdbc.Driver
+        jdbc-url: jdbc:mysql://127.0.0.1:3306/activiti?useSSL=false&useUnicode=true&characterEncoding=UTF-8
+        username: root
+        password: 123456
+    # 分片规则
+    sharding:
+      tables:
+        act_hi_procinst:
+          actual-data-nodes: activiti0.act_hi_procinst_${0..1}
+#          actual-data-nodes: activiti0.act_hi_procinst
+          table-strategy:
+            inline:
+              algorithm-expression: act_hi_procinst_${proc_inst_id % 2}
+#              algorithm-expression: act_hi_procinst
+              sharding-column: proc_inst_id
+          key-generator:
+            column: id111
+            type: SNOWFLAKE
+        # order_config 表配置
+#        order_config:
+#          actualDataNodes: ds-orders-0.order_config # 仅映射到 ds-orders-0 数据源的 order_config 表
+    # 拓展属性配置
+    props:
+      sql:
+        show: true # 打印 SQL
