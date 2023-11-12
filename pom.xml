@@ -635,6 +635,7 @@
     <module>modules/activiti-bpmn-converter</module>
     <module>modules/activiti-engine</module>
     <module>modules/Testdemo</module>
+      <module>modules/shardingsphereDemo</module>
   </modules>
 
   <build>
